@@ -1,0 +1,7 @@
+1)Register on IBM watson .
+2)Go to the Build ChatBot.
+3)Create New Service.
+4)Create New Skill.
+5)Import "skill-weather-Report" json file into ur skill using "import skill" option.
+
+"IBM watson Setup Completed"

@@ -1,0 +1,921 @@
+{
+  "name": "weather Report",
+  "intents": [
+    {
+      "intent": "Week_Weather_Data",
+      "examples": [
+        {
+          "text": "Get me the weather report for this week"
+        },
+        {
+          "text": "Weekly Forecast"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Get_Temperature",
+      "examples": [
+        {
+          "text": "I want to know about the weather forecast."
+        },
+        {
+          "text": "I want to know about the current  Temperature"
+        },
+        {
+          "text": "Current Temperature"
+        },
+        {
+          "text": "cur temp"
+        },
+        {
+          "text": "temperature"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "General_Ending",
+      "examples": [
+        {
+          "text": "no"
+        },
+        {
+          "text": "Going now"
+        },
+        {
+          "text": "Good. bye."
+        },
+        {
+          "text": "Goodbye"
+        },
+        {
+          "text": "Have a nice day?"
+        },
+        {
+          "text": "Hey bot go away"
+        },
+        {
+          "text": "I am leaving"
+        },
+        {
+          "text": "I am out of here"
+        },
+        {
+          "text": "I d like to stop doing this"
+        },
+        {
+          "text": "I have got to go"
+        },
+        {
+          "text": "I want to quit"
+        },
+        {
+          "text": "I'm done"
+        },
+        {
+          "text": "Im done"
+        },
+        {
+          "text": "Im good thank you"
+        },
+        {
+          "text": "I'm leaving now"
+        },
+        {
+          "text": "It was nice chatting with you"
+        },
+        {
+          "text": "Ok goodbye"
+        },
+        {
+          "text": "See you later"
+        },
+        {
+          "text": "See you"
+        },
+        {
+          "text": "Shut up"
+        },
+        {
+          "text": "Stop doing this"
+        },
+        {
+          "text": "Stop talking to me"
+        },
+        {
+          "text": "Thank you for your time"
+        },
+        {
+          "text": "Thanks, bye!"
+        },
+        {
+          "text": "Thanks very much, bye!"
+        },
+        {
+          "text": "That is all"
+        },
+        {
+          "text": "That's everything"
+        },
+        {
+          "text": "Time to go"
+        },
+        {
+          "text": "Go away"
+        },
+        {
+          "text": "Go off"
+        },
+        {
+          "text": "Bye bye"
+        },
+        {
+          "text": "Bye now"
+        },
+        {
+          "text": "Catch you later"
+        },
+        {
+          "text": "Cya later"
+        },
+        {
+          "text": "End trial"
+        },
+        {
+          "text": "Ending this session"
+        },
+        {
+          "text": "Finished now, good bye"
+        },
+        {
+          "text": "Get lost"
+        }
+      ],
+      "description": "End the conversation."
+    },
+    {
+      "intent": "General_Greetings",
+      "examples": [
+        {
+          "text": "Good evening"
+        },
+        {
+          "text": "Good morning"
+        },
+        {
+          "text": "Good to see you"
+        },
+        {
+          "text": "Greetings"
+        },
+        {
+          "text": "Have you been well?"
+        },
+        {
+          "text": "Hello Agent"
+        },
+        {
+          "text": "Hello I am looking for some help here"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hey how are you doing"
+        },
+        {
+          "text": "Hey there all"
+        },
+        {
+          "text": "Hey there"
+        },
+        {
+          "text": "Hey twin"
+        },
+        {
+          "text": "Hey you"
+        },
+        {
+          "text": "Hi advisor"
+        },
+        {
+          "text": "Hi there"
+        },
+        {
+          "text": "How are things going?"
+        },
+        {
+          "text": "How are you today?"
+        },
+        {
+          "text": "How have you been?"
+        },
+        {
+          "text": "How is it going?"
+        },
+        {
+          "text": "How r u?"
+        },
+        {
+          "text": "Looking good eve"
+        },
+        {
+          "text": "Ok take me back"
+        },
+        {
+          "text": "What's new?"
+        },
+        {
+          "text": "What's up?"
+        },
+        {
+          "text": "Who is this?"
+        },
+        {
+          "text": "You there"
+        },
+        {
+          "text": "Good day"
+        }
+      ],
+      "description": "Greet the bot."
+    }
+  ],
+  "entities": [
+    {
+      "entity": "City_name",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-location",
+      "values": []
+    },
+    {
+      "entity": "sys-date",
+      "values": []
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-07-10"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "current "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1547809446223",
+      "context": {
+        "api": "current"
+      },
+      "metadata": {},
+      "conditions": "$location",
+      "dialog_node": "node_11_1547372037215",
+      "previous_sibling": "node_10_1547371987324"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_5_1547809446223",
+      "metadata": {},
+      "variable": "$date",
+      "dialog_node": "slot_5_1548066663023",
+      "previous_sibling": "slot_7_1547809467754"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_5_1547809446223",
+      "metadata": {},
+      "variable": "$location",
+      "dialog_node": "slot_7_1547809467754",
+      "previous_sibling": "node_11_1547372037215"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_5_1547809446223",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1547809467732",
+      "previous_sibling": "slot_5_1548066663023"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "current with date"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1547809446223",
+      "context": {
+        "api": "curwithdate"
+      },
+      "metadata": {},
+      "conditions": "$location && $date",
+      "dialog_node": "node_10_1547371987324"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Could you tell me a location?"
+      },
+      "parent": "slot_45_1547374729848",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_47_1547374729848",
+      "previous_sibling": "handler_46_1547374729848"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_45_1547374729848",
+      "context": {
+        "location": "@sys-location"
+      },
+      "metadata": {},
+      "conditions": "@sys-location",
+      "event_name": "input",
+      "dialog_node": "handler_46_1547374729848"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_34_1547374254266",
+      "event_name": "focus",
+      "dialog_node": "handler_36_1547374254266",
+      "previous_sibling": "handler_35_1547374254266"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_34_1547374254266",
+      "context": {
+        "location": "@sys-location"
+      },
+      "conditions": "@sys-location",
+      "event_name": "input",
+      "dialog_node": "handler_35_1547374254266"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_48_1547374729848",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_50_1547374729848",
+      "previous_sibling": "handler_49_1547374729848"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_48_1547374729848",
+      "context": {
+        "date": "@sys-date"
+      },
+      "metadata": {},
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_49_1547374729848"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_42_1547374728544",
+      "metadata": {},
+      "variable": "$date",
+      "dialog_node": "slot_48_1547374729848",
+      "previous_sibling": "slot_45_1547374729848"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_42_1547374728544",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_51_1547374729848",
+      "previous_sibling": "slot_48_1547374729848"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_42_1547374728544",
+      "metadata": {},
+      "variable": "$location",
+      "dialog_node": "slot_45_1547374729848"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_26_1547374052681",
+      "event_name": "focus",
+      "dialog_node": "handler_28_1547374052681",
+      "previous_sibling": "handler_27_1547374052681"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_26_1547374052681",
+      "context": {
+        "location": "@sys-location"
+      },
+      "conditions": "@sys-location",
+      "event_name": "input",
+      "dialog_node": "handler_27_1547374052681"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_29_1547374064319",
+      "event_name": "focus",
+      "dialog_node": "handler_31_1547374064319",
+      "previous_sibling": "handler_30_1547374064319"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_29_1547374064319",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_30_1547374064319"
+    },
+    {
+      "type": "slot",
+      "parent": "node_32_1547374231760",
+      "variable": "$date",
+      "dialog_node": "slot_37_1547374263119",
+      "previous_sibling": "slot_34_1547374254266"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_32_1547374231760",
+      "event_name": "focus",
+      "dialog_node": "handler_33_1547374254245",
+      "previous_sibling": "slot_37_1547374263119"
+    },
+    {
+      "type": "slot",
+      "parent": "node_32_1547374231760",
+      "variable": "$location",
+      "dialog_node": "slot_34_1547374254266"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_37_1547374263119",
+      "event_name": "focus",
+      "dialog_node": "handler_39_1547374263119",
+      "previous_sibling": "handler_38_1547374263119"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_37_1547374263119",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_38_1547374263119"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            ""
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_7_1547809467754",
+      "event_name": "filled",
+      "dialog_node": "handler_1_1548251147760",
+      "previous_sibling": "handler_8_1547809467754"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1547809467754",
+      "context": {
+        "location": "@sys-location"
+      },
+      "metadata": {},
+      "conditions": "@sys-location",
+      "event_name": "input",
+      "dialog_node": "handler_8_1547809467754",
+      "previous_sibling": "handler_9_1547809467754"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Sorry This city is not found in our database.Please try again"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_7_1547809467754",
+      "event_name": "nomatch",
+      "dialog_node": "handler_2_1548251147760",
+      "previous_sibling": "handler_1_1548251147760"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Sure I can help you with that. Could you  please tell me a location?"
+      },
+      "parent": "slot_7_1547809467754",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_9_1547809467754"
+    },
+    {
+      "type": "slot",
+      "parent": "node_24_1547373980621",
+      "variable": "$date",
+      "dialog_node": "slot_29_1547374064319",
+      "previous_sibling": "slot_26_1547374052681"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_24_1547373980621",
+      "event_name": "focus",
+      "dialog_node": "handler_25_1547374052673",
+      "previous_sibling": "slot_29_1547374064319"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_24_1547373980621",
+      "context": {
+        "api": "current"
+      },
+      "metadata": {},
+      "conditions": "#Get_Temperature",
+      "dialog_node": "node_41_1547374548572",
+      "previous_sibling": "node_40_1547374512242"
+    },
+    {
+      "type": "slot",
+      "parent": "node_24_1547373980621",
+      "variable": "$location",
+      "dialog_node": "slot_26_1547374052681",
+      "previous_sibling": "node_41_1547374548572"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_24_1547373980621",
+      "context": {
+        "api": "week"
+      },
+      "metadata": {},
+      "conditions": "#Week_Weather_Data",
+      "dialog_node": "node_40_1547374512242"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1548066663023",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_7_1548066663023",
+      "previous_sibling": "handler_6_1548066663023"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1548066663023",
+      "context": {
+        "date": "@sys-date"
+      },
+      "metadata": {},
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_6_1548066663023"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Sorry This city is not found in our database.Please try again"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_15_1547372284862",
+      "event_name": "nomatch",
+      "dialog_node": "handler_6_1548252624332",
+      "previous_sibling": "handler_16_1547372284862"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_15_1547372284862",
+      "context": {
+        "location": "@sys-location"
+      },
+      "metadata": {},
+      "conditions": "@sys-location",
+      "event_name": "input",
+      "dialog_node": "handler_16_1547372284862",
+      "previous_sibling": "handler_17_1547372284862"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Sure I can help you with that.Could you tell me a location?"
+      },
+      "parent": "slot_15_1547372284862",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_17_1547372284862"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_13_1547372267289",
+      "event_name": "focus",
+      "dialog_node": "handler_14_1547372284846",
+      "previous_sibling": "slot_15_1547372284862"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_13_1547372267289",
+      "metadata": {},
+      "variable": "$location",
+      "dialog_node": "slot_15_1547372284862"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "api": "week"
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#Week_Weather_Data",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_13_1547372267289",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_5_1547809446223",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thanks for Using Our Service...."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#General_Ending",
+      "dialog_node": "node_1_1547808976543",
+      "previous_sibling": "node_1_1547534712811"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "api": "locSuggestion"
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#Get_Temperature",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1547809446223",
+      "digress_out": "allow_all",
+      "previous_sibling": "Welcome",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#General_Greetings",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1547534712811",
+      "previous_sibling": "node_42_1547374728544"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "title": "Oh! Great What You want to Know ?",
+            "options": [
+              {
+                "label": "Current Temperature",
+                "value": {
+                  "input": {
+                    "text": "Current Temperature"
+                  }
+                }
+              },
+              {
+                "label": "Weekly Forecast",
+                "value": {
+                  "input": {
+                    "text": "Weekly Forecast"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "context": {
+        "api": "loc"
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "@sys-location",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_24_1547373980621",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_32_1547374231760",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_1_1547808976543"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": []
+      },
+      "context": {
+        "api": "curwithdate"
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "@sys-date",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_42_1547374728544",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_24_1547373980621",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "api": "curwithdate"
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "@sys-location && @sys-date",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_32_1547374231760",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_13_1547372267289",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "workspace_id": "89a50b27-a116-4da3-8569-2c62eca69fdf",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
