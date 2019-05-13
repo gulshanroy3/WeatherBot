@@ -1,0 +1,153 @@
+<p>
+  weather-bot works!
+</p>
+
+<div class="container-fluid h-100">
+  <div class="row justify-content-center h-100">
+    <div class="col-md-4 col-xl-3 chat">
+    </div>
+    <div class="col-md-8 col-xl-6 chat">
+      <div class="card">
+        <div class="card-header msg_head">
+          <div class="d-flex bd-highlight">
+            
+            <div class="bot_info">
+              <span>Weather Bot</span>
+              
+            </div>
+          
+          </div>
+         
+          
+        </div>
+        <div #scrollMe [scrollTop]="scrollMe.scrollHeight" class="scroll">
+          <div *ngFor="let replies of reply" >
+            <div *ngIf="replies.loading && !replies.self; else response" class="img_cont_msg">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          <ng-template #response>
+              <div class="d-flex justify-content-start mb-4" *ngIf="!replies.self" >
+                  <div class="img_cont_msg">
+                    <img src="https://media3.giphy.com/media/3s5rIu1mUMPVIFYvGO/200.webp?cid=3640f6095c5964a44369706e36671fc2" class="rounded-circle user_img_msg">
+                  </div>
+      
+                  <div class="msg_cotainer">
+                  {{replies.text}}
+                  <div *ngIf="replies.option.length>=1">
+                    <div  *ngFor="let option of replies.option">
+                      <div style="text-align: center">
+                         <button type="button" class="btn btn-primary btn-md" style="text-align:center" (click)=sendMessage(option.option1)>{{option.option1}}</button> <br>
+                         <br>
+                         <button type="button" class="btn btn-primary btn-md" (click)=sendMessage(option.option2)>{{option.option2}}</button>
+                      </div>
+                   </div>
+                  </div>
+                 <div *ngIf="replies.data.length===1">
+                  <div *ngFor="let data of replies.data"  >
+                  
+                    <div class="box top left"> Min  {{data.min_temp}}°C</div>
+                    <div class="box top right"> Max {{data.max_temp}}°C </div>
+                     <div class="middle" style="text-align:center;font-size: 200%">
+                        <div>{{data.temp}}°C </div>
+                     </div>
+                     <div class="center" > <img src="{{data.img}}"  style="width:120px;height:120px"></div>
+                     <div class="max" style="text-align:right">
+                        <div class="describe" style="text-align:center">Description-- {{data.description}}</div>
+                        <div class="date" style="text-align:center">{{data.date}} </div>
+                     </div>
+                  </div>
+               </div>
+               <div    *ngIf="replies.condition!=0" style="width:250px" id="myCarousel"  class="carousel slide" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" >
+                   <div  class="carousel-item active" >
+                    <div class="box top left"> Min  {{replies.data[0].min_temp}}°C</div>
+                    <div class="box top right"> Max {{replies.data[0].max_temp}}°C </div>
+
+
+                      <div class="middle" style="text-align:center;font-size: 200%">
+                         <div>{{replies.data[0].temp}}°C </div>
+                      </div>
+                      <div class="center" > <img src="{{replies.data[0].img}}"  style="width:120px;height:120px"></div>
+                      <div class="max" style="text-align:right">
+                         <div class="describe" style="text-align:center">Description-- {{replies.data[0].description}}</div>
+                         <div class="date" style="text-align:center">      {{replies.data[0].date}} </div>
+                      </div>
+                   </div>
+                   <div *ngFor="let data of replies.data | slice:1; let i = index;"style="width:100%" class="carousel-item" >
+                    <div class="box top left"> Min  {{data.min_temp}}°C</div>
+                    <div class="box top right"> Max {{data.max_temp}}°C </div>
+                      <div class="middle" style="text-align:center;font-size: 200%">
+                         <div>{{data.temp}}°C </div>
+                      </div>
+                      <div class="center" > <img src="{{data.img}}"  style="width:120px;height:120px"></div>
+                      <div class="max" style="text-align:right">
+                         <div class="describe" style="text-align:center">Description-- {{data.description}}</div>
+                         <div class="date" style="text-align:center">{{data.date}} </div>
+                      </div>
+                   </div>
+                </div>
+               
+     <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+                <!-- Left and right controls -->
+             </div>
+      
+            
+                  </div>
+                </div>
+          </ng-template>
+
+
+          <div class="d-flex justify-content-start mb-4" *ngIf="!replies.loading && this.autosuggestion.length>0 && replies.autosuggestion.length>0" >
+            <div class="img_cont_msg">
+              <img src="https://media3.giphy.com/media/3s5rIu1mUMPVIFYvGO/200.webp?cid=3640f6095c5964a44369706e36671fc2" class="rounded-circle user_img_msg">
+            </div>
+            <div class="msg_cotainer">
+            
+          <div *ngFor="let autosuggestion of autosuggestion">
+             <div class="edit" style="text-align:center"> {{autosuggestion.title}}</div>
+             <div style="text-align: center">
+                <button type="button" class="btn btn-primary btn-md" style="margin-right:20px" (click)=autoSuggestion(autosuggestion.option1) >{{autosuggestion.option1}}</button>
+                <button type="button" class="btn btn-primary btn-md" (click)=autoSuggestion(autosuggestion.option2)>{{autosuggestion.option2}}</button>
+             </div>
+          </div>
+       </div>
+            </div>
+
+          <div class="d-flex justify-content-end mb-4" *ngIf="replies.self">
+            <div class="msg_cotainer_send">
+              {{replies.text}}
+            </div>
+            <div class="img_cont_msg">
+          <img src="data:image/png;base64,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" class="rounded-circle user_img_msg">
+           
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="card-footer">
+          <div class="input-group">
+            
+            <form class="example-form">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Type your message..." (keyup)="searchTerm$.next($event.target.value)" (keyup.enter)="onEnter(values)"   [(ngModel)]="values"  name="text" >
+               
+              </mat-form-field>
+            </form>
+            <div class="input-group-append" (click)=sendMessage(values)>
+              <span class="send_btn"><i class="fa fa-send" style="font-size:24px"></i></span>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

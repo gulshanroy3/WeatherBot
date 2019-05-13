@@ -1,0 +1,9 @@
+<button type="button" class="btn btn-primary btn-md" [matMenuTriggerFor]="bot">
+    Choose Text Bot
+  </button>
+<mat-menu #bot="matMenu">
+  <!-- <button mat-menu-item><a [routerLink]="['/utilisationbot']" class="btn btn-link">utilisation bot</a></button> -->
+  <button mat-menu-item><a [routerLink]="['/weatherbot']" class="btn btn-link">weather bot</a></button>
+</mat-menu>
+ <router-outlet></router-outlet>
+      
